@@ -132,6 +132,8 @@ public class NegozioPC
     public Pc[] VisualizzaTuttiPcSottoUnaQuantita(int quantita)         
     {
         Pc[] quantitaInferiore= new Pc[getNPcPresebti()];
+        Pc computer;
+        int c=0;
         
         
         
@@ -140,8 +142,10 @@ public class NegozioPC
             if(elencoComputer[i].getQuantita()<quantita)
                 
             {
-                quantita=quantita-elencoComputer[i].getQuantita();
-                elencoComputer[i].setQuantita(quantita);
+                computer= elencoComputer[i];
+                quantitaInferiore[c]= computer;
+                c++;
+               
             }
            
             
