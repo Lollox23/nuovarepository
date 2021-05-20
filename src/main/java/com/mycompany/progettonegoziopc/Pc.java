@@ -73,6 +73,8 @@ public void setQuantita(int quantita)
 
 
 
+
+
  public String toString()
     {
         String s;
