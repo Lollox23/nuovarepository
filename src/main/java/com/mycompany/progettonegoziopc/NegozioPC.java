@@ -14,7 +14,8 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- *
+ * la mia classe 
+ * 
  * @author almab
  */
 public class NegozioPC   implements Serializable
@@ -23,12 +24,19 @@ public class NegozioPC   implements Serializable
     private final int N_MAX_PC=100;
      private int nPCPresenti=0;
    
-    
+ /**
+  * inizializzo l'array
+  */
      public NegozioPC ()
       {
           elencoComputer=new Pc[N_MAX_PC];
       }
      
+     /**
+      * il metodo aggiungiPc controlla se il numero di pc presenti è maggiore dle numero massimo, se è cosi istanzia un nuovo pc
+      * @param computer
+      * @return 
+      */
      
      public int aggiungiPc(Pc computer)
     {
@@ -39,12 +47,22 @@ public class NegozioPC   implements Serializable
         return 0;
     }
      
+     /**
+      * il metodo getPc restituisce Pc
+      * @param posizione
+      * @return 
+      */
+     
      public Pc getPc(int posizione)
      {
          return elencoComputer[posizione];
      }
       
-
+/**
+ * il metodo rimuoviPc fa passare tutti i pc presenti e compara il codice di ogni pc con 
+ * quello che è stato inserito nel main e quando il codice combacia aggiorna il pc 
+ * @param codice 
+ */
      public void rimuoviPc(String codice)
     {
 
@@ -57,6 +75,10 @@ public class NegozioPC   implements Serializable
             }
     }
 
+     /**
+      * il metodo aggiornaPosizione aggiorna la posizione nell' array
+      * @param posizione 
+      */
      
     private void aggiornaPosizione(int posizione)
     {
@@ -67,7 +89,13 @@ public class NegozioPC   implements Serializable
         nPCPresenti--;
     }
        
-       
+       /**
+        * il metodo AggiungiUnaCertaQuantitaDiPc gli vienie chiesto di inserire il nome del pc 
+        * la quale quantita vuole essere aggiunta, ne aggiornera dopo la quantita
+        * @param nome
+        * @param quantita
+        * @return 
+        */
         public int AggiungiUnaCertaQuantitaDiPc(String nome,int quantita)
     {
         for(int i=0;i<nPCPresenti;i++)
@@ -86,6 +114,13 @@ public class NegozioPC   implements Serializable
            return 0;
     }
         
+        /**
+         * il metodo DecrementaUnaCertaQuantitaDiPc gli vienie chiesto di inserire il nome del pc 
+         * la quale quantita vuole essere decrementata, ne aggiornera dopo la quantita
+         * @param nome
+         * @param quantita
+         * @return 
+         */
         
            public int DecrementaUnaCertaQuantitaDiPc(String nome,int quantita)
                   {
@@ -105,11 +140,22 @@ public class NegozioPC   implements Serializable
                             return 0;
                         }
            
-           
+           /**
+            * restituisce nPCPresenti
+            * @return 
+            */
            public int getNPcPresebti()
                 {
                   return nPCPresenti;
                 }
+           
+           
+           /**
+            * il metodo VisualizzaTuttiPcSottoUnaQuantita fa passare tutti i pc presenti, li controlla e 
+            * quando la quantita di un utente e minore della quantita inserita lo visualizza
+            * @param quantita
+            * @return 
+            */
            
     public Pc[] VisualizzaTuttiPcSottoUnaQuantita(int quantita)         
     {
@@ -136,6 +182,13 @@ public class NegozioPC   implements Serializable
         
     }
            
+    /**
+     *  esporta i dati in formato csv
+     * @param nomeFile
+     * @throws IOException
+     * @throws EccezionePosizioneNonValida
+     * @throws FileException 
+     */
            
            public void salvaComputer(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileException
     {
@@ -151,6 +204,15 @@ public class NegozioPC   implements Serializable
             }
         f1.close(); 
     }
+           
+           
+           /**
+            * salva i dati dei pc su un file di tipo binario
+            * @param nomeFile
+            * @throws IOException
+            * @throws EccezionePosizioneNonValida
+            * @throws FileException 
+            */
 
     public void salvaComputerBinario(String nomeFile) throws IOException, EccezionePosizioneNonValida, FileException
     {
@@ -160,32 +222,7 @@ public class NegozioPC   implements Serializable
         writer.flush();
         writer.close();
     }
-           
-           
     
-   
-           
-           
-           
- 
-       
-       
-       public String toString()
-    {
-        Pc t;
-        String s="";
-        for(int i=0;i<N_MAX_PC;i++)
-        {
-            if(elencoComputer[i]!=null)
-            {
-                t=elencoComputer[i];
-                s=s+"Posizione:  "+i+t.toString()+"\n";
-            }   
-        }
-        return s;
-    }
-      
   
-     
 }
 
