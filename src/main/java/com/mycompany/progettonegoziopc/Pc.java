@@ -5,11 +5,14 @@
  */
 package com.mycompany.progettonegoziopc;
 
+import java.io.Serializable;
+
 /**
  *
  * @author almab
  */
-public class Pc {
+public class Pc implements Serializable
+{
     
     //atributi
     private String codice ;

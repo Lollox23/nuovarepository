@@ -9,7 +9,7 @@ package eccezioni;
  *
  * @author User
  */
-public class FileException extends Exception
+public class FileException extends Exception 
 {
     private String motivoEccezione;
     public FileException(String message)

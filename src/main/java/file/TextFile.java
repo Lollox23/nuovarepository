@@ -12,12 +12,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *
  * @author User
  */
-public class TextFile 
+public class TextFile implements Serializable
 {
     private  char mode;
     private BufferedReader reader;

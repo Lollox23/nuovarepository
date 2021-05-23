@@ -11,12 +11,13 @@ import file.TextFile;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /**
  *
  * @author almab
  */
-public class NegozioPC  
+public class NegozioPC   implements Serializable
 {
     private Pc[] elencoComputer;
     private final int N_MAX_PC=100;
@@ -43,26 +44,7 @@ public class NegozioPC
          return elencoComputer[posizione];
      }
       
-      
-      /*
-       public int rimuoviPc(int posizione)
-    {
-        
-        try
-        {
-            if(elencoComputer[posizione]==null)
-               return -2;           
-            elencoComputer[posizione]=null;
-            return posizione;
-        }
-        catch(ArrayIndexOutOfBoundsException posizioneNonValida)
-        {
-            return -1;
-        }
-        
-           
-    }
-      */ 
+
      public void rimuoviPc(String codice)
     {
 

@@ -7,14 +7,17 @@ package com.mycompany.progettonegoziopc;
 
 import eccezioni.EccezionePosizioneNonValida;
 import eccezioni.FileException;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author almab
  */
-public class Main {
+public class Main implements Serializable {
     
     
     public static void main(String[] args) throws IOException {
@@ -23,10 +26,12 @@ public class Main {
          String codicePC;
          String nomePC;
          int quantitaPC;
-         String nomeFile=" pc.txt";
+         String nomeFile=" computer.txt";
+          String nomeFileBinario=" pc.bin";
+         
  
         
-         String[] vociMenu=new String[7];
+         String[] vociMenu=new String[8];
           int sceltaUtente=0;
           Scanner tastiera=new Scanner(System.in);
           
@@ -42,6 +47,30 @@ public class Main {
             vociMenu[4]="compra un pc specifico";
             vociMenu[5]="visualizza tutti i pc sotto un determinato numero";
             vociMenu[6]="salva i dati su un file";
+            vociMenu[7]="salva i dati su un file binario";
+             
+             try 
+        {
+            FileInputStream f1=new FileInputStream(nomeFileBinario);
+            ObjectInputStream reader=new ObjectInputStream(f1);
+
+            try
+            {
+                n=(NegozioPC)reader.readObject();
+                reader.close();
+                System.out.println("\nLettura avvenuta correttamente");
+            }
+            catch(ClassNotFoundException ex)
+            {
+                reader.close();
+                System.out.println("Errore di lettura");
+            }
+        }
+        catch(IOException ex)
+        {
+            System.out.println("\nImpossibile accedere al file"); 
+        }
+             
     
     
             Menu menu= new Menu(vociMenu);
@@ -58,20 +87,20 @@ public class Main {
                    }
                      case 1:
                     { 
+                        
                         pc=new Pc();
                         System.out.println("Codice-->");
                         pc.setCodice(tastiera.nextLine());
                         System.out.println("Nome-->");
-                        pc.setNome(tastiera.nextLine());
+                        pc.setNome(tastiera.nextLine());               
                         System.out.println("Quantita pc-->");
                         pc.setQuantita(tastiera.nextInt());
-                        
                         n.aggiungiPc(pc);
                         
-                      System.out.println("premi un pulsante per continuare");
+                        System.out.println("premi un pulsante per continuare");
+                        tastiera.nextLine();
                         
-                        
-                       tastiera.nextLine();
+                       
                         break;
                     }
                      case 2:
@@ -84,7 +113,7 @@ public class Main {
                         System.out.println("pc eliminato correttamente");
                         
                         System.out.println("premi un pulsante per continuare");
-                        
+                        tastiera.nextLine();
                         break;
                     }
                     case 3:
@@ -99,7 +128,7 @@ public class Main {
                         
                         
                         System.out.println("premi un pulsante per continuare");
-                        
+                        tastiera.nextLine();
                         break;
                     }
                     case 4:
@@ -115,7 +144,7 @@ public class Main {
                         
                         
                         System.out.println("premi un pulsante per continuare");
-                        
+                        tastiera.nextLine();
                         break;
                     }
                     
@@ -138,7 +167,7 @@ public class Main {
                          }
                    
                         System.out.println("premi un pulsante per continuare");
-                        
+                        tastiera.nextLine();
                         break;
                     }
 
@@ -147,6 +176,27 @@ public class Main {
                         try
                         {
                             n.salvaComputer(nomeFile);
+                            System.out.println("salvataggioa vvenuto in modo coretto");
+                            
+                        }
+                        catch(IOException e1)
+                        {
+                            System.out.println("impossibile accedere al file, i pc non sono stati slavato ");
+                        }
+                        catch(EccezionePosizioneNonValida | FileException e2)
+                                {
+                                    System.out.println(e2.toString());
+                                }                 
+                        
+                        break;
+                    }
+                    
+                    
+                    case 7:
+                    {
+                        try
+                        {
+                            n.salvaComputerBinario(nomeFileBinario);
                             System.out.println("salvataggioa vvenuto in modo coretto");
                             
                         }

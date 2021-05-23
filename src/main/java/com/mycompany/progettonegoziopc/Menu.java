@@ -5,13 +5,14 @@
  */
 package com.mycompany.progettonegoziopc;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
  *
  * @author almab
  */
-public class Menu {
+public class Menu implements Serializable {
     
     
     private String[] elencoVoci;
