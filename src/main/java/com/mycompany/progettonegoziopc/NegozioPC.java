@@ -57,6 +57,17 @@ public class NegozioPC   implements Serializable
      {
          return elencoComputer[posizione];
      }
+
+     /**
+      * restituisce il numeor massimo di pc che puoi inserire
+      * @return 
+      */
+      public int getNumMaxPc()
+                {
+                  return N_MAX_PC;
+                }
+           
+     
       
 /**
  * il metodo rimuoviPc fa passare tutti i pc presenti e compara il codice di ogni pc con 

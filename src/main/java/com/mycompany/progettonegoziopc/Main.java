@@ -45,7 +45,7 @@ public class Main implements Serializable {
             vociMenu[2]="elimina un pc dalla lista";
             vociMenu[3]="vendi un pc specifico";
             vociMenu[4]="compra un pc specifico";
-            vociMenu[5]="visualizza tutti i pc sotto un determinato numero";
+            vociMenu[5]="visualizza tutti i pc sotto una determinata quantita";
             vociMenu[6]="salva i dati su un file";
             vociMenu[7]="salva i dati su un file binario";
              
@@ -160,10 +160,15 @@ public class Main implements Serializable {
                          
                           computer=n.VisualizzaTuttiPcSottoUnaQuantita(quantitaPC);
                          
-                       
+                        System.out.println("ecco i pc in base alla quantita");
+                        
                          for(int i=0; i<computer.length; i++)
                          {
-                             System.out.println(computer[i].getCodice());
+                             
+                             System.out.println("nome-->"+computer[i].getNome());
+                             System.out.println("Codice-->"+computer[i].getCodice());
+                             System.out.println("quantita-->"+computer[i].getQuantita());
+                             
                          }
                    
                         System.out.println("premi un pulsante per continuare");
