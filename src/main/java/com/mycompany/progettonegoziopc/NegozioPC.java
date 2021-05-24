@@ -129,7 +129,7 @@ public class NegozioPC   implements Serializable
                             if(elencoComputer[i].getNome().compareToIgnoreCase(nome)==0)
                 
                             {
-                                   quantita=quantita-elencoComputer[i].getQuantita();
+                                   quantita=elencoComputer[i].getQuantita()-quantita;
                                  elencoComputer[i].setQuantita(quantita);
                            }
             
